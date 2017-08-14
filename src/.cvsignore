@@ -1,0 +1,6 @@
+*.o
+*~
+*.bak
+Makefile.in
+treehouse
+

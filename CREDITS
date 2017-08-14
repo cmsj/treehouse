@@ -1,0 +1,12 @@
+I guess the biggest thanks I have to give so far are to Steven Radack who wrote a little util called "pop3check" which I blatently pinched some TCP code from (with permission) and heavily modified. I could have written it myself, but it seemed so much easier to just pilfer something that was there already!. One or two functions (mostly the MIME related stuff) came from gmail/Spruce and I used the GNOME Help Browser to figure out the Gtk-XmHTML widget.
+Richard Lowe (richlowe) deserves some thanks for assisting in the process of turning Treehouse into a collection of libraries and also for being a useful person to bounce ideas off.
+
+I'd also like to thank Deryk Robboson (newlook), a good buddy of mine on IRC who has provided some mildly useful technical info at various stages of the project.
+
+Mats Henrikson (zakalwe) deserves a mention for being one of the people who helped me get motivated to write this program and for also agreeing to be a victim (errr, beta tester) when it is ready.
+
+All the GTK guys get a mention for making a fine toolkit that doesnt use C++ as standard, the lads over at MySQL get some warm regards for making a truly kick ass database.
+
+The regulars of comp.lang.c, the GNOME-Devel mailing list and the GTK-Devel mailing list have been a big help in chasing down some silly bugs and I thank them heartily.
+
+If I've missed you out, tough. Mail me and I might think about including you.

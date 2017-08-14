@@ -1,0 +1,5 @@
+XSym
+0022
+430635f733c6c4d10aca3d6d9681ead1
+/home/cmsj/.indent.pro
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

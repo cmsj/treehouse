@@ -1,0 +1,25 @@
+IMPORTANT: You must have MySQL installed to use Treehouse and if the header files are not in /usr/include/mysql then you will need to edit "configure.in". The same applies for the MySQL shared libraries
+
+Treehouse is very easy to install because it uses the GNU autoconf and automake scripts, so, for most purposes, the following commands should work with no problems:
+
+./autogen.sh   (use '--with-debug' to build a debugging version of Treehouse)
+make
+make install
+cd dbase
+./make_db.sh   (you must be the user that has admin privaleges on the MySQL server to do this)
+
+(the final step will create the MySQL database)
+
+By default, MySQL uses startup options that aren't optimal for use with an application such as Treehouse. We recommend passing the options:
+
+  -O max_allowed_packet=50M
+  -O key_buffer=512k
+  -O sort_buffer=16k
+  -O table_cache=32
+  -O record_buffer=8k
+  -O net_buffer=10K
+
+to the MySQL binary when it is started (usually from an init script).
+
+During the install, an entry in the GNOME "foot" menu will be created for Treehouse (in the 'Internet' section) - click on it to run Treehouse, or type 'treehouse' at a shell.
+

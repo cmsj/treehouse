@@ -1,0 +1,26 @@
+Treehouse v0.1.0
+ by Chris Jones
+ (c)1999 Chris Jones
+ Released under the GNU General Public License (see "COPYING" file)
+
+Release Notes:
+
+This is the first beta release of Treehouse and as such it is the first release that has been tested anywhere but my development box and it is quite likely that you will encounter problems. If you have any comments, suggestions or bug reports please report them via the mailing lists and/or bugzilla available on http://sourceforge.net/projects/black-mail/
+If you are sending a bug report, please recompile Treehouse with debugging enabled and redirect it's output to a file, then send the file to me with a description of the bug and how to reproduce it; Without the debugging log I will have a much harder time reproducing the bug so I can fix it.
+
+Since this is an initial beta, there is still much functionality missing that will be integrated in future beta releases. Some of the missing features are:
+
+ o PGP/GPG support
+ o Address book (this will definitely be in beta 2 [0.2.0])
+ o Drag 'n Drop (fairly low priority at the moment)
+
+Patches to implement those features are more than welcome!
+
+Thanks for choosing Treehouse!
+
+ _____ _         _       _____
+| __  | |___ ___| |_ ___|   __|_ _ ___        Chris "Ng" Jones
+| __ -| | .'|  _| '_|___|__   | | |   |  chris@black-sun.co.uk
+|_____|_|__,|___|_,_|   |_____|___|_|_|    www.black-sun.co.uk
+            S o f t w a r e
+

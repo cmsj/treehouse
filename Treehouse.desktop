@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Treehouse
+Comment=Email client
+Exec=treehouse
+Terminal=0
+Type=Application
+

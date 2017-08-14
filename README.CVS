@@ -1,0 +1,3 @@
+This CVS tree is cluttered with junk directories that I foolishly added to the repository 
+before I realised that I wasn't going to be doing anything with them. Unfortunately I 
+don't think CVS allows for removal of directories so we are pretty much stuck with them :(

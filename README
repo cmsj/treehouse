@@ -1,0 +1,15 @@
+Treehouse v0.1.0
+ by Chris Jones
+ (c)1999 Chris Jones
+ Released under the GNU General Public License (see "COPYING" file)
+
+Treehouse is a brand new email client for Linux and other Unix-like operating systems. It relies on the GNOME and GTK libraries for GUI operations and MySQL for storage of emails, address books, etc. (so you will need GNOME, GTK and MySQL installed to use Treehouse)
+
+For installation help, see the INSTALL file and for complete documentation, look in the docs/ drawer.
+
+Please note, Treehouse has currently only been tested within a limited field (but it aims to be RFC compliant). It will work fine if your pop3 server is cucipop v1.31 and your smtp server is a recent sendmail. Beyond that, you may have problems. If you do, recompile Treehouse with the debugging information switched on (instructions in the INSTALL file) and send me the output of any relevant sections and I'll try my best to help you.
+
+WARNING: Treehouse is still in beta testing and it is possible it will crash. Every care has been taken to avoid data loss should the worst happen, but I can't accept any responsibility for things going wrong and your emails being trashed. I thoroughly recommend that you use fetchmail to download your mail and then use a local pop3 server to suck it into Treehouse - I don't have a permenant Internet connection so I haven't put much testing into use with remote servers. I would also recommend that you use Treehouse in parallel with your existing mail client until you are comfortable that it isn't going to crash on your machine - it would probably be better to force Treehouse to leave your mail on the pop3 server until the final version is released.
+
+Thanks for choosing Treehouse!
+

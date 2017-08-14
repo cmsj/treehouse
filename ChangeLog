@@ -1,0 +1,495 @@
+Treehouse ChangeLog
+
+Please note: This is a pretty long and comprehensive file, I'm documenting a lot of the changes I make (mainly for my own reference).
+
+Release specific changes:
+
+0.1.0   Beta phase ("Bitchen Kin" release)
+	*Placeholder* This version has not been released
+
+0.0.16  Alpha phase ("")
+        The major news for this revision is that the project
+         name has changed - BlackMail is dead, long live
+         Treehouse. Black-Mail 2 is now also dead. It will
+         eventually be reborn as Treehouse2, but not until I
+         can secure funding to develop it full time.
+        Further improvements to the MIME code, mostly related
+         to displaying image attachments inline.
+
+0.0.15  Alpha phase ("I'm back, and this time I'm bad" release)
+	Development restarted because I'm sick of using Netscape
+	 Mail and Black-Mail (BlackMail 2) development is going
+	 far too slowly for my liking (ie practically nothing is
+	 done)
+	Beat up the database a lot - the headers and bodies are
+	 no longer stored in the database and as a consequence
+	 things are running much faster - a 30000 mail folder
+	 now takes about 3 seconds to display rather than >10 as
+	 it was before. This is a *good* thing. If you are using
+	 an older version of BlackMail you are basically screwed.
+	 I hacked up a small tool to convert my local database,
+	 but I'm not going to release it (you shoudn't be using
+	 BlackMail anyway - what's wrong with you? ;)
+	Removed lots of cruft and tidied up the code a bit. If a
+	 function wasn't being used, it's gone. That's a bit of
+	 a waste of potentially useful code, but right now I'd
+	 rather have a neat source tree that works and is cruft
+	 free.
+        Implemented code for message filtering. Still fairly
+	 basic, but you can filter messages into folders based
+	 on the contents of a single header or the entire
+	 header block with either a case sensitive or case
+	 in-sensitive search.
+	Ripped out the MIME code that was lurking from 0.0.14.
+	 I then looked at gmail which also took it's MIME code
+	 from Spruce, rewrote some stuff and MIME is just about
+	 working now (including inline images :)
+
+0.0.14	Alpha phase ("Double time stroker" release)
+	Added the necessary MIME code (mostly taken from Spruce).
+	 It still needs a lot of work, but at least it's there.
+	Some of the core MIME functions have been completely 
+	 rewritten as the Spruce ones weren't all that good!
+	 (no disrespect to the Spruce author, the code just
+	 didn't seem to do the job here). I've since spoken to
+	 the Spruce author and he agreed that it was broken ;)
+	I'm experimentally changing the database structure. The
+	 information I extract from the mails (mostly for use by
+	 the folder listing stuff) will go into a seperate table
+	 (mail_data) and the actual mails themselves will reside
+	 in the current table (mail). This is intended to boost
+	 the speed of listing folder contents which is at the 
+	 moment is almost completely useless - it scales very
+	 badly. The major problem with this change is that it
+	 creates lots more opportunity for data consistency
+	 between the two tables to be lost should BlackMail
+	 crash at an inopportune moment. Depending on how my
+	 tests go, this change may be removed in a later release.
+	After reading a bit more of GLib's documentation I
+	 wrote a new set of tcp functions to use GIOChannels. It
+	 doesn't really bring any new features or speed boosts,
+	 but it's using more GLib stuff which probably means it
+	 will be more portable should anyone ever decide to port
+	 BlackMail.
+	After a fair bit of thought I decided to remove the many,
+	 many, many #ifdef DEBUG debugging statements. I don't
+	 think they were of much use to anyone really.
+	Having stripped out the DEBUG stuff I'm now inclined to go
+	 through and clean the rest of the code up, remove stupid
+	 comments and generally modularise things a bit more.
+	Since GtkXmHTML is effectively depracated I have converted
+	 BlackMail to the new GtkHTML widget which is currently
+	 in development. Because of this you will need to install
+	 the gtkhtml and it's dependancies from GNOME CVS.
+
+0.0.13  Alpha phase ("Here goes nothing" release)
+	Bumped revision number and released to a small, select
+	 group of people
+	extract_header() now calls g_strstrip before returning to
+	 remove any leading/trailing whitespace from the header.
+        The contents of $HOME/.signature are appended to mails if
+         the file is found. Needs to be improved and probably 
+         replaced with a fancier sig editor in the configuration
+         dialogs later.
+	Removed code that marked all mails in 'Sent Items' as read.
+	 This is now handled by the code that sends mails in the
+	 'Outbox' and moves them to 'Sent Items'.
+	Added function strstrcase() which is mostly taken from
+	 Spruce. This improves the detection of headers in mails.
+	Mails are now word wrapped before they are displayed. This
+	 will be configurable later.
+	Introduction of more flexible configuration that doesn't
+	 require editing header.h ;)
+        Fixed a type in the column saving code
+	Improved font handling - all unread messages are now done
+	 with the same font!
+	Replaced a few sprintf()s with the safer g_strdup_printf().
+
+0.0.12  Alpha phase ("Christmas only comes once a year" release)
+	Finished off some code to display how many mails are unread
+	 in a folder in the status bar.
+	Added code for creating, deleting and moving folders
+	Optimised the pop3 code for checking if a mail on the server
+	 has been downloaded before. This has brought a HUGE speed
+	 increase and I am now happy with the speed it's running at
+	 NOTE: This has caused a change in the database structure
+	        so you MUST alter any previous databases accordingly
+	Re-arranging the database a bit has given some serious speed
+	 increases - it was all my fault, I didn't have a primary
+	 key in the "mail" folder and hence it didn't have an index
+	 so it was going way too slow. Doh!
+	The statusbar now shows which message it is processing when
+	 it's sending and receiving.
+	Slightly modified the smtp code so you don't have to put a
+	 comma after the to address (this will be replaced later by
+	 the proper parsing code)
+	The extract_header function can now cope with headers that
+	 spill onto multiple lines
+	Began work on a setup druid
+	Prettied up the HTML code a bit
+	Added code to handle replies. Still need to write a mail
+	 address parser though.
+	If a mail consists of nothing but HTML it is rendered 
+	 directly to the widget (although images will be broken)
+	Added code to use "Reply-To:" header instead of "From:"
+	 if it exists when replying (this should probably be a
+	 configurable option)
+	Tidied up some files and removed some old code
+	More speed increases to some of the SQL related code.
+	Improved some POP3 stuff.
+	Code now exists that parses From: and Reply-To: headers
+	 to extract the name and email address of the sender.
+	 It copes with the main formats so far - I've scanned
+	 through about 7,000 emails and not found any more formats!
+	Column wrapping code is now present. There is also word 
+	 wrapping support. It's been tested a bit, but not a
+	 huge amount yet.
+
+0.0.11	Alpha phase ("Animal Magic" release)
+	The GtkPaned widgets that seperate the folder list from the 
+	 message list/display area and message list from the display
+	 area now store their positions so the GUI will return to
+	 the correct state you left it (although this has to be
+	 done in a hackish way as Gtk+ doesn't expose an API for
+	 doing this neatly - it should).
+	Messages can be moved between folders by selecting them and
+	 using the right-click context menu. Drag 'n Drop support
+	 should still be added
+	Finished code to put newly composed messages in the Outbox
+	Display number of messages in a folder in the status bar
+	Added necessary code for internationalisation and reworked
+	 various Makefile.am's and other files to make the build
+	 process support languages - it isn't tested yet though.
+	Sending glue code is now mostly functioning
+	Improved the speed of the folder and message code, but had
+	 to remove the code that displays the number of unread
+	 messages in a folder after it's name - that complex a
+	 query over a large mail table is too slow and was taking
+	 a couple of seconds to update. Hopefully it will reappear
+	 someday as it's a really nice feature!
+	Added code to move delivered mails from the Outbox to the
+	 Sent Items folder
+	Database speed is started to be a problem when a lot of
+	 queries have to be performed in rapid succession. I need
+	 to investigatge and find a way of improving the performance
+	 or a lot of other neat features will go the way of the
+	 unread mail totals.
+	Added some #defines to configure colours and fonts. These
+	 will eventually be replaced by a configuration dialog.
+	First version to be tested outside my box (thanks to Mats
+	 Henrikson, bug tester extraordinaire!)
+	Changed the "Move to folder..." dialog to not use a
+	 scrolled window. This will make it look bad on systems
+	 that have LOTS of folders, but it looks a lot better on
+	 systems that don't (which will be most people)
+	Fixed an inconsistancy where moving a mail from a folder
+	 didn't select the previous mail in the list and displayed
+	 the mail that had been moved in the HTML widget.
+	Added the code for the "Save As" button in the compose
+	 window. Not really important, but it's a fairly small bit
+	 of code.
+	Fixed some bugs
+
+0.0.10  Alpha phase ("Octafanny" release)
+	Messages are now shown in bold in the MessageList widget if
+	 they are market as unread in the database and when they are
+	 viewed they are marked as read and show in a normal font
+	 (the fonts are hardcoded for now until the Preferences
+	 dialogs appear)
+	Messages can be marked read or unread and deleted through a
+	 context sensetive menu (more than one message can be
+	 affected at once)
+	Multiple messages can now be deleted at once
+	Added code for "Mark all read" (and an unread equivalent)
+	Fixed the pop3 progress bar (it didn't work before!)
+	Deleted messages are now moved to the "Deleted Items" folder
+	 (unless they are already in there, in which case they are
+	 removed permenantly).
+	Fixed a bug where selecting multiple mails would cause the
+	 client to display each one in turn (not good when you select
+	 200 mails!)
+	Begun work on the Compose window and implemented some code
+	 to handle closing of multiple windows properly at exit
+	Allocate slightly more memory (100 bytes more) when grabbing
+	 mails (I came across a case where a POP3 server put an
+	 unusually large message before the mail and this is a kind
+	 of kludgy fix for that)
+	Converted the tcp_read_write() function to a gint so that
+	 I can put some more error checking in the pop3/smtp code
+	Removed some unnecessary junk for the gtk_xmhtml widget that
+	 made it's way in via some copy'n'paste from the gnome help
+	 browser. It's still a pretty badly put together widget :(
+	Added account editing code
+	Improved performance of the deleting code (it was previously
+	 opening and closing a database connection for each mail
+	 that was deleted!) Also added code to display the progress
+	 of the deleting in the progress meter.
+	Fixed a bug in the displaying of "Cc:" information in the
+	 HTML widget
+
+0.0.9   Alpha phase ("Cheese Weasel" release)
+	Big change in this release is that I'm now using CVS to keep
+	 track of what I do.
+	Fixed the column title saving code that was a bit broken in
+	 0.0.8
+	Added the code for the deleting messages callback. It's not
+	 perfect in terms of detail, but it works.
+	Fixed a couple of bugs in the account creation code.
+	Added code to delete accounts.
+	Finally changed the pop3 code so it grabs from all the
+	 accounts you have setup (if they have the "check by default"
+	 option flaged)
+	Doing the above pointed out some thinkos in the pop3 code
+	 which are now fixed
+	Added support for leaving mail on the server (and not 
+	 downloading it if it is already in the local database)
+	Fixed a bug which stopped the folder list being updated when
+	 new mails were received or mails were deleted.
+	Fixed a bug in the way folder names are handled (it choked on
+	 names with a space in)
+	Added a "BlackMail" item to the folder list that displays the
+	 startup HTML page that might, one day, do something of vague
+	 interest. Maybe.
+	Fixed a very bizarre memory related bug in the POP3 code by
+	 replacing some g_malloc()/strcpy() pairs with g_strdup()
+	 Not happy with how it was fixed, but happy that it is fixed!
+	Fixed some other tiny bugs and thinkos.
+	Modularised the code a bit more (created accounts.c)
+
+0.0.8   Alpha phase ("Mighty Mong" release)
+	Starting to add some little things that have been waiting for
+	 a while (mainly because I'm bored, but I can't be all that
+	 bothered to start on a complex function yet).
+	Added a sorting callback to the title buttons of the message
+	 list. It alternates between ascending and descending sorts.
+	Tidied up the way the database connection error handling works
+	 (it didn't work before, but it seems to now - expect problems
+	 if your MySQL connection is lost part way through usage).
+	The text -> HTML conversion code is now LIGHTNING fast. Even on
+	 the 22KB email that took around 10 seconds to convert it is
+	 effectively instant (certainly under 0.5 seconds) and that is
+	 with debugging switched on (which means that tons of text is
+	 being dumped to the terminal). Very happy! Credit for the
+	 speedup goes to Helmut Leitner from comp.lang.c. That's what
+	 happens when you use arrays instead of pointers - *SLOW* ;)
+	Work has started on account configuration so that multiple
+	 mail accounts can be checked and sent with.
+	The column titles in the message list now save their widths
+	 (idea came from gmail, but my implementation is cleaner than
+	 theirs IMHO ;)
+
+0.0.7   Alpha phase ("Bond" release)
+	This is a purely bug hunting release. I decided to fix all of
+	 the bugs I know about (which in turn revealed some others and
+	 pointed out a few areas where I had made mistakes of logic)
+	Found a couple of silly bugs in the HTML displaying code (a
+	 missing '&' in the HTML source and a 2KB HTML buffer). Both
+	 are now fixed and as far as I can see, even with larger mails
+	 it is displaying properly.
+	Fixed a really dumb bug in the TCP code that only affected
+	 receiving mails (all other TCP operations worked fine). I
+	 spent ages pouring over my code to find the problem then ran
+	 it through gdb and spotted it immediately. Typical!
+	Removed all the checks for g_malloc() failing. I read a bit
+	 of Havoc Pennington's GNOME/GTK+ book and apparantly
+	 g_malloc() will abort the whole application if it fails to
+	 find any RAM, which is nice (and cuts down my code a bit more).
+	Cut down the HTML conversion code a HUGE amount. I was being
+	 completely stupid in my previous approach - I had totally
+	 forgotten about the existance of the "<pre>" tag for making
+	 pre-formatted ASCII text display properly. Gone is the ugly
+	 code that turned tabs and spaces into "&nbsp;" tags. In the 
+	 process of doing this I also identified and I think fixed a 
+	 bug that was causing BlackMail to only show part of really 
+	 long messages. There is still a big problem with the HTML 
+	 conversion code in that it is very slow on large messages.
+	 For example, a 22KB mail would contain around 22,000 letters,
+	 each one of which has to be checked to see if it is a '<' or
+	 a '>' so that it can be replaced. That is a really slow
+	 operation for such a simple task. If I can't improve the speed
+	 I may have to ditch the HTML widget, something I'm really not
+	 happy about.
+	Finally fixed another stupid bug related to the way the list
+	 of messages works.
+	That wraps up all the bugs I know about in this release, so it's
+	 on to the next release for some new features!
+
+0.0.6   Alpha phase ("You need it because you're weak" release)
+	Major change in this release is the GUI starting to work a bit
+	 better.
+	Removed most hardcoded variables. Once they are all gone, the
+	 thing will finally be able to leave my system and be shown
+	 to some other people without it failing miserably on them!
+	After a LOT of headscratching at the GNOME Help Browser code
+	 I finally grok the GtkXmHTML widget and so that has made an
+	 appearance, and messages can finally be displayed! It seems
+	 slightly buggy in places, but hopefully that will get fixed.
+	Thanks to some help from the very cool people on comp.lang.c the
+	 pop3 loop now works properly and isn't at all a kludgy hack!
+	 It's been tested quite a bit now and it seems to be working ok.
+	The sql function for adding mail into the database also seems
+	 to be working properly now too. I've removed some fixed length
+	 strings and allocated memory properly and it's a lot more stable
+	 (lots more checking code is now in place to make sure that vital
+	 functions don't fail unnoticed).
+	Similar thanks must go to the people on the GTK-devel mailing
+	 list who have also displayed the ability to helpfully answer my
+	 stupid questions with stunning speed and accuracy.
+	I've pretty much finished a little code loop for converting
+	 ASCII text to HTML on-the-fly and based on the very limited
+	 tests I've thrown at it, it seems to be working well (although
+	 it did expose what I consider to be a glaring bug in GtkXmHTML
+	 that I was able to work around (if the bug is fixed, my work-
+	 around will not affect anything, it is totally transparent)
+	I've added LOTS of checking for system calls. All g_malloc()s are
+	 now checked to make sure they returned properly and write()
+	 calls have received the same treatment (which only really
+	 affects the tcp code)
+	Fatal/Important errors are now displayed with a GNOME message
+	 box to aid people who don't start things like this from a
+	 shell (if you have debugging enabled, you will see the message
+	 along with the rest of the debug output incase the GTK stuff
+	 fails too!).
+	Worked out a minor design flaw with the tcp code that would
+	 limit the amount of data it could receive in one go. It's still
+	 not perfect (in that you really need to know how much data is
+	 coming before it arrives!), but for now it's safe. I have
+	 imposed an arbitrary limit on the size of messages received from
+	 a pop3 or smtp server to 8KB. To my knowledge, there is no
+	 point in either transaction where a server response should be
+	 greater than that. Obviously the point in the pop3 code where
+	 you grab the actual message could easily be higher than 8KB, but
+	 thanks to my slight re-design of the tcp code, this is now
+	 easily possible (and with pop3, you DO know the size of the
+	 message before it arrives!)
+
+0.0.5   Alpha phase ("Hella cool" release)
+	This is quite a big update, I decided I was updating my revisions
+	 too quickly, so I'm going to do more work between revisions from
+	 now on. The major new feature is the beginnings of a GUI. I
+	 decided that it was quite clear that I could do this project and
+	 much of the backend code is now either finished, or at least
+	 working, so I decided it was safe to start bashing out some GTK.
+	 Some of the SQL stuff is now working with the GUI (like the list
+	 of folders and list of mails in a folder).
+	smtp code is getting more and more polished and should be finished
+	 RSN. The Cc: and Bcc: features are still slightly missing, but
+	 what is there now seems to be pretty rock solid. Cc: should be
+	 very easy to do, but Bcc: is going to be a pain in the ass. I
+	 stopped and thought about it the other day and it just doesn't
+	 fit in with my current smtp model. Doh! It would be so much
+	 nicer if smtp servers would handle Cc: and Bcc: fields
+	 automatically.
+	The pop3 code has also been improved a fair bit. I cut the amount
+	 of RAM it uses quite drastically when I stopped allocating mem
+	 for the entire mailbox (it now allocates mem on a per mail basis).
+	 It also queries the pop3 server for a UIDL for each mail. This
+	 is currently un-used, but will provide the basis of a "leave mail
+	 on server" option that works properly!
+	The tcp code is (imho) quite lovely. Both the smtp and pop3 code
+	 is now using my new modular read_write_tcp() function and it's
+	 cropped the code a LOT (thanks to the folks on comp.lang.c who
+	 helped me overcome a mild brain fart when I couldn't get a
+	 function pointer working).
+	Lots of code tidying and beautification went on recently, I read
+	 Linus' CodingStyle document and although I'm not entirely 100%
+	 in agreement with him on how things should be layed out, he
+	 does present what seem like reasonable justifications for his
+	 style. Based on those justifications, I'm trying to stick as
+	 much as possible to the conventions of that document. One of the
+	 things he mentions is that very long functions are bad. I tend
+	 to agree and BlackMail contains two very large functions
+	 (get_mail and send_mail) which I have tried to cut down as much
+	 as possible. Unfortunately, they are by their very nature, long
+	 winded conversations between BlackMail and a mail server, so
+	 there is litle that can be done to alter their concepts, but I
+	 have modularised the code for sending/receiving tcp data which
+	 cut down quite a lot (and moved a large number of identical
+	 debug commands out of the functions too).
+	My investigations into an HTML displaying GTK widget have
+	 given mixed results. I found what appears to be the only widget
+	 of it's kind in GtkXmHTML, but there is no documentation for it
+	 and the only project I can find that uses it is the GNOME Help
+	 Browser. The code for that project is pretty obfuscated IMHO
+	 and I haven't been able to figure out exactly how to get the
+	 widget to work (or even be created!!). I will contact Miguel
+	 (who ported the widget from Motif) and ask him for some help.
+	 Outlook 98 has always annoyed me by having a different widget
+	 for showing ASCII, RTF and HTML mails (resulting in a delay
+	 when changing between mails of different types). I would rather
+	 convert ASCII to HTML on the fly and have all mails display
+	 at a consistant rate (unless it works out to be VERY slow).
+
+0.0.4   Alpha phase ("Sweaty Boatmen" release)
+	The smtp code in 0.0.3 really didnt work at all. It was utterly
+	 broken in a couple of places. I hadn't tested it at all in 0.0.3
+	 but instead, just copied it over from my smtp test code and
+	 made a few alterations. There were a couple of really glaring
+	 bugs (e.g. a sizeof() instead of a strlen() - the sort of thing
+	 you don't notice easily at 3am when sendmail is rejecting what 
+	 looks like a perfectly valid command!) and some concept errors, but
+	 the whole thing is working very nicely now. Cc: and Bcc: support
+	 is still lacking, but should be present in the next version.
+	After Cc: and Bcc: I think I should tackle MIME. It's pretty
+	 daunting and I'm tempted to skip over it until a later release,
+	 but it's something I'm going to have to do, so I should get
+	 it in and supported before I go all GUI. I'm hoping to find a
+	 GTK widget that displays HTML. If I can, I'm going to
+	 use it to display all the messages. That way, showing stuff
+	 like HTML mail, inline attachments, etc. is going to be much
+	 easier.
+
+0.0.3   Alpha phase ("Send the monkey again" release)
+	smtp code is coming along nicely. It is no longer full of evil
+	 hardcoded variables, everything is read from a structure that
+	 is passed to the send_mail() function (I was adding a number
+	 of things to the function and decided there were too many
+	 variables being passed to it, so I moved them all into a
+	 structure. It now handles multiple "To:" addresses (not fully
+	 tested yet though) and will shortly handle "Cc:" and "Bcc:"
+	 addresses too.
+
+0.0.2   Alpha phase ("Monkey finger" release)
+	I've cleaned up the pop3 code a bit and begun work on some basic
+	 smtp stuff. It can send a mail, but all the variables are still
+	 hardcoded (as they are in most places in the source) and there is
+	 no error checking.
+
+0.0.1   Alpha phase ("Kludge city" release)
+	This is really early stuff. I'm basically moving all the bits from
+	 the test code into it's own functions and getting it all setup
+	 so I have as much of an easy life as possible later.
+	So far, there is no GUI and I dont expect there to be for quite a
+	 few revisions yet. I want to get as much of the underlying code
+	 in place before I go any further into GUI making (I've not been a
+	 bottom-up fan of programming before which is probably why there are
+	 loads of GUIs with no backend code sitting in my development drawer.
+	 I didnt want to waste time designing a GUI if I wasn't going to
+	 actually write any code to go under it, so this time I'm doing
+	 things "properly").
+
+0.0.0   Testing phase ("I hope this works" release)
+	Functions written and tested for pop3 and sql work. This is proof
+	 of concept stuff, I am just making sure that I can write the code
+	 needed of this project before I waste loads of time designing
+	 the rest of it.
+
+Project started late May 1999 (earliest date I have on any of the test code is 1 Jun 1999, but that was after a few days hacking).
+
+NOTICE:
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+$Header: /cvsroot/treehouse/treehouse/ChangeLog,v 1.4 2001/06/26 00:43:13 chrisjones Exp $
+

@@ -1,0 +1,11 @@
+src/accounts.c
+src/treehouse.c
+src/compose.c
+src/folder.c
+src/gui.c
+src/html.c
+src/message.c
+src/pop3.c
+src/smtp.c
+src/sql.c
+src/tcp.c

@@ -1,0 +1,339 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2001-06-26 01:02+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: src/accounts.c:32
+msgid "Name:"
+msgstr ""
+
+#: src/accounts.c:33
+msgid "Email Address:"
+msgstr ""
+
+#: src/accounts.c:34
+msgid "Autonumber"
+msgstr ""
+
+#: src/accounts.c:35
+msgid "Default:"
+msgstr ""
+
+#: src/accounts.c:129 src/accounts.c:438
+msgid "You have not filled in all required fields"
+msgstr ""
+
+#: src/accounts.c:157 src/accounts.c:174 src/accounts.c:473 src/compose.c:261
+#: src/compose.c:345 src/sql.c:153
+msgid "SQL Query failed"
+msgstr ""
+
+#: src/accounts.c:230
+msgid "No accounts found."
+msgstr ""
+
+#: src/accounts.c:236 src/accounts.c:302 src/accounts.c:373 src/accounts.c:546
+#: src/compose.c:127 src/folder.c:65 src/folder.c:274 src/folder.c:347
+#: src/folder.c:459 src/message.c:67 src/message.c:472 src/message.c:572
+#: src/message.c:773 src/message.c:823 src/pop3.c:117 src/pop3.c:491
+#: src/smtp.c:223 src/smtp.c:276 src/sql.c:145
+msgid "Unable to establish database connection"
+msgstr ""
+
+#: src/accounts.c:385
+msgid "Grave error in the accounts table, please contact the author"
+msgstr ""
+
+#: src/compose.c:61
+msgid "Send"
+msgstr ""
+
+#: src/compose.c:61
+msgid "Send this mail"
+msgstr ""
+
+#: src/compose.c:63
+msgid "Save As"
+msgstr ""
+
+#: src/compose.c:63
+msgid "Save the message text to a file"
+msgstr ""
+
+#: src/compose.c:68
+#, c-format
+msgid "Compose (%d)"
+msgstr ""
+
+#: src/compose.c:78
+msgid "  To:  "
+msgstr ""
+
+#: src/compose.c:79
+msgid "  Cc:  "
+msgstr ""
+
+#: src/compose.c:80
+msgid " Subject: "
+msgstr ""
+
+#: src/compose.c:145
+msgid ""
+" wrote:\n"
+"> \n"
+"> "
+msgstr ""
+
+#: src/compose.c:148
+msgid "Re: "
+msgstr ""
+
+#: src/compose.c:269
+msgid ""
+"You must set one of your mail accounts as default\n"
+"Please set a default account with the following dialog..."
+msgstr ""
+
+#: src/compose.c:284
+msgid "You have not specified an email address\n"
+msgstr ""
+
+#: src/compose.c:390
+msgid "Save message as..."
+msgstr ""
+
+#: src/compose.c:391
+msgid "Choose file to save message as..."
+msgstr ""
+
+#: src/compose.c:412
+msgid "Unable to open file for writing"
+msgstr ""
+
+#: src/compose.c:422
+msgid "Writing failed"
+msgstr ""
+
+#: src/compose.c:463 src/compose.c:493 src/message.c:200
+msgid "Error: Unable to locate UIDL in entry"
+msgstr ""
+
+#: src/folder.c:248 src/folder.c:327 src/folder.c:408
+msgid "Please select a folder first"
+msgstr ""
+
+#: src/folder.c:252
+msgid "Create new folder in '"
+msgstr ""
+
+#: src/folder.c:256
+msgid "Folder name:"
+msgstr ""
+
+#: src/folder.c:287
+msgid ""
+"A folder with this name already exists\n"
+"Folder names must be unique"
+msgstr ""
+
+#: src/folder.c:331
+msgid "Delete folder '"
+msgstr ""
+
+#: src/folder.c:333
+msgid ""
+"Are you sure you want to delete this folder?\n"
+"Anything in this folder will be moved to 'Deleted Items'"
+msgstr ""
+
+#: src/folder.c:415
+msgid "Move folder '"
+msgstr ""
+
+#: src/folder.c:448
+msgid "You can't move a folder inside itself!"
+msgstr ""
+
+#: src/folder.c:485
+msgid "Only subfolders can be moved"
+msgstr ""
+
+#: src/gui.c:29
+msgid "Name"
+msgstr ""
+
+#: src/gui.c:30
+msgid "Description"
+msgstr ""
+
+#: src/gui.c:31
+msgid "Target folder"
+msgstr ""
+
+#: src/gui.c:32
+msgid "mId"
+msgstr ""
+
+#: src/gui.c:52
+msgid ""
+"MySQL driven mail client\n"
+" Homepage: http://www.black-sun.co.uk/treehouse\n"
+" Released under the GNU Public License"
+msgstr ""
+
+#: src/gui.c:106
+msgid " Status: Ready"
+msgstr ""
+
+#: src/gui.c:131
+msgid "Unable to generate folder list"
+msgstr ""
+
+#: src/gui.c:324
+msgid "Treehouse filters"
+msgstr ""
+
+#: src/message.c:46
+msgid "No items found"
+msgstr ""
+
+#: src/message.c:114
+msgid "Message listing failed"
+msgstr ""
+
+#: src/message.c:139 src/message.c:599 src/message.c:698
+#, c-format
+msgid " Status: Ready ( %d item%s, %d unread )"
+msgstr ""
+
+#: src/message.c:233
+msgid "Error: No matches found"
+msgstr ""
+
+#: src/message.c:477
+msgid " Status: Deleting mails..."
+msgstr ""
+
+#: src/message.c:779
+msgid " Status: Marking all mails as read..."
+msgstr ""
+
+#: src/message.c:829
+msgid " Status: Marking all mails as unread..."
+msgstr ""
+
+#: src/message.c:868
+msgid "Move to Folder..."
+msgstr ""
+
+#. User pressed "Ok"
+#: src/message.c:882
+msgid " Status: Moving mails..."
+msgstr ""
+
+#: src/message.c:920
+msgid "SQL query failed"
+msgstr ""
+
+#: src/pop3.c:135
+msgid "POP3 server rejected your username"
+msgstr ""
+
+#: src/pop3.c:147
+msgid "POP3 server rejected your password"
+msgstr ""
+
+#: src/pop3.c:159
+msgid ""
+"POP3 server rejected the 'STAT' command\n"
+"This is highly unusual"
+msgstr ""
+
+#: src/pop3.c:249
+msgid ""
+"POP3 Server rejected the 'RETR' command\n"
+"Please consult your system administrator"
+msgstr ""
+
+#: src/pop3.c:272
+msgid "Error: Unable to locate end of headers"
+msgstr ""
+
+#: src/pop3.c:348
+msgid "Error: Delete failed"
+msgstr ""
+
+#: src/pop3.c:365
+msgid ""
+"Warning: The mailserver failed on the QUIT command\n"
+"This often means that a DELE (delete) command has failed\n"
+"You should consult your system administrator and possibly use a debug build "
+"of Treehouse to obtain more information"
+msgstr ""
+
+#: src/pop3.c:508
+msgid " Status: Checking for new mail on account: '"
+msgstr ""
+
+#: src/pop3.c:513
+msgid "Error: Unable to connect to server '"
+msgstr ""
+
+#: src/smtp.c:101
+msgid "Error: No detectable \"To:\" addresses"
+msgstr ""
+
+#: src/smtp.c:309
+msgid "Accounts error"
+msgstr ""
+
+#: src/smtp.c:345
+msgid "Sending failed"
+msgstr ""
+
+#: src/sql.c:188
+msgid "MySQL Configuration"
+msgstr ""
+
+#: src/sql.c:194
+msgid "MySQL Server: "
+msgstr ""
+
+#: src/sql.c:195
+msgid "MySQL Username: "
+msgstr ""
+
+#: src/sql.c:196
+msgid "MySQL Password: "
+msgstr ""
+
+#: src/sql.c:213
+msgid "Save password"
+msgstr ""
+
+#. User did not complete all the settings options
+#: src/sql.c:254
+msgid "Error: You MUST specify all three settings"
+msgstr ""
+
+#: src/tcp.c:101
+msgid "Error: buffer exceeded"
+msgstr ""
+
+#: src/tcp.c:113
+#, c-format
+msgid ""
+"Treehouse Error: Mail does not appear to be complete (expected: '%d' "
+"received: '%d')\n"
+msgstr ""
